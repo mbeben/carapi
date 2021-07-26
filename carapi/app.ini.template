@@ -1,0 +1,10 @@
+[Database]
+DATABASE_USER                       = change_me
+DATABASE_HOST                       = 127.0.0.1
+DATABASE_NAME                       = change_me
+DATABASE_PORT                       =
+DATABASE_PASSWORD                   = 123106
+
+[Django]
+SECRET_KEY                          = change_me
+DEBUG                               = False
