@@ -1,18 +1,18 @@
+import os
 from pathlib import Path
-from .utils import get_config
 
-# Get config values from file.
-config = get_config()
-
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 
-SECRET_KEY = config['Django']['SECRET_KEY']
+SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = config.getboolean('Django', 'DEBUG')
+DEBUG = os.getenv('DEBUG')
+
+# Car API settings
+API_URL = os.getenv('API_URL')
+
 
 ALLOWED_HOSTS = ['*']
 
@@ -26,6 +26,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Third party apps
+    'rest_framework',
+
+    # My apps
+    'api',
+
 ]
 
 MIDDLEWARE = [
@@ -59,23 +66,16 @@ TEMPLATES = [
 WSGI_APPLICATION = 'carapi.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config['Database']['DATABASE_NAME'],
-        'USER': config['Database']['DATABASE_USER'],
-        'PASSWORD': config['Database']['DATABASE_PASSWORD'],
-        'HOST': config['Database']['DATABASE_HOST'],
+        'NAME': os.getenv('DATABASE_NAME'),
+        'USER': os.getenv('DATABASE_USER'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+        'HOST': os.getenv('DATABASE_HOST'),
         'PORT': 5432,
     }
 }
-
-
-# Password validation
-# https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
