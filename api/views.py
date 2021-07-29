@@ -4,7 +4,7 @@ from api.models import Car
 
 from .serializers import CarSerializer, CarListSerializer, RateSerializer, PopularSerializer
 from rest_framework.generics import CreateAPIView, ListAPIView
-from api_common.viewsets import CreateListDestroyModelViewset
+from api_common.views import CreateListDestroyModelViewset
 
 
 class CarViewSet(CreateListDestroyModelViewset):

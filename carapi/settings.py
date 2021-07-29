@@ -30,8 +30,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Third party apps
-    'whitenoise',
     'rest_framework',
+    'django_extensions',
 
     # My apps
     'api',

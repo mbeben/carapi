@@ -73,9 +73,11 @@ class CarListSerializer(serializers.ModelSerializer):
 
 class RateSerializer(serializers.ModelSerializer):
 
+    car_id = serializers.PrimaryKeyRelatedField(source='car', queryset=Car.objects.all(), )
+
     class Meta:
         model = Rate
-        fields = '__all__'
+        fields = ('car_id', 'rate', )
 
 
 class PopularSerializer(serializers.ModelSerializer):
