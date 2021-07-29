@@ -11,7 +11,7 @@ class CarSerializer(serializers.ModelSerializer):
     @staticmethod
     def get_url_model_for_make(make):
         url = '{}/vehicles/getmodelsformake/{}?format=json'.format(settings.API_URL, make)
-        return url
+        return url.replace(" ", "")
 
     def validate(self, attrs):
         request = requests.get(url=self.get_url_model_for_make(attrs['make'])).json()
@@ -64,7 +64,7 @@ class CarSerializer(serializers.ModelSerializer):
 
 class CarListSerializer(serializers.ModelSerializer):
 
-    avg_rating = serializers.IntegerField(source='average_rating')
+    avg_rating = serializers.FloatField(source='average_rating')
 
     class Meta:
         model = Car
@@ -76,3 +76,12 @@ class RateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Rate
         fields = '__all__'
+
+
+class PopularSerializer(serializers.ModelSerializer):
+
+    rate_count = serializers.IntegerField()
+
+    class Meta:
+        model = Car
+        fields = ('make', 'model', 'rate_count')

@@ -8,12 +8,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 
-SECRET_KEY = os.getenv('SECRET_KEY', 'geagaeg')
+SECRET_KEY = os.getenv('SECRET_KEY',)
 
-DEBUG = os.getenv('DEBUG', 'True')
+DEBUG = os.getenv('DEBUG',)
 
 # Car API settings
-API_URL = os.getenv('API_URL')
+API_URL = os.getenv('API_URL', '')
 
 
 ALLOWED_HOSTS = ['*']
