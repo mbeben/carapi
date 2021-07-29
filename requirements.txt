@@ -4,5 +4,4 @@ djangorestframework
 psycopg2-binary>=2.8
 requests
 django-heroku
-whitenoise
 django-extensions
