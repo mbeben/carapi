@@ -1,11 +1,13 @@
+from rest_framework.response import Response
+
 from api.models import Car
 
-from .serializers import CarSerializer, RateSerializer
+from .serializers import CarSerializer, CarListSerializer, RateSerializer
 from rest_framework.generics import CreateAPIView, ListAPIView
-from api_common.viewsets import CreateListDestroyModelViewset
+from api_common.viewsets import CreateDestroyModelViewset
 
 
-class CarViewSet(CreateListDestroyModelViewset):
+class CarViewSet(CreateDestroyModelViewset):
     """
     A simple viewset for viewing, adding and deleting cars.
     """
@@ -13,8 +15,13 @@ class CarViewSet(CreateListDestroyModelViewset):
     serializer_class = CarSerializer
     queryset = Car.objects.all()
 
-    def list(self, request, *args, **kwargs):
-        return super().list(request, *args, **kwargs)
+
+class CarListView(ListAPIView):
+    """
+    A simple view for listing all cars
+    """
+    serializer_class = CarListSerializer
+    queryset = Car.objects.all()
 
 
 class RateCreateView(CreateAPIView):

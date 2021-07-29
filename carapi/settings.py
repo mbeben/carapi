@@ -8,9 +8,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.getenv('SECRET_KEY', 'geagaeg')
 
-DEBUG = os.getenv('DEBUG')
+DEBUG = os.getenv('DEBUG', 'True')
 
 # Car API settings
 API_URL = os.getenv('API_URL')
@@ -75,10 +75,10 @@ WSGI_APPLICATION = 'carapi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DATABASE_NAME'),
-        'USER': os.getenv('DATABASE_USER'),
-        'PASSWORD': os.getenv('DATABASE_PASSWORD'),
-        'HOST': os.getenv('DATABASE_HOST'),
+        'NAME': os.getenv('DATABASE_NAME', 'carapi'),
+        'USER': os.getenv('DATABASE_USER', 'maikey'),
+        'PASSWORD': os.getenv('DATABASE_PASSWORD', '123106'),
+        'HOST': os.getenv('DATABASE_HOST', 'localhost'),
         'PORT': 5432,
     }
 }

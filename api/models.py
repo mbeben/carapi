@@ -1,5 +1,5 @@
-from django.db import models
 
+from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 
 
@@ -12,8 +12,20 @@ class Car(models.Model):
         return '{}: {}'.format(self.make, self.model)
 
     @property
-    def rates(self):
-        return ''
+    def rate_count(self):
+        return self.rate_set.count()
+
+    @property
+    def average_rating(self):
+        rates = self.rate_set.all()
+        all_rates = []
+        for rate in rates:
+            all_rates.append(rate.rate)
+
+        if len(all_rates) == 0:
+            return 0
+
+        return round(sum(all_rates)/len(all_rates), 2)
 
 
 class Rate(models.Model):

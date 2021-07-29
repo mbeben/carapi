@@ -64,9 +64,11 @@ class CarSerializer(serializers.ModelSerializer):
 
 class CarListSerializer(serializers.ModelSerializer):
 
+    avg_rating = serializers.IntegerField(source='average_rating')
+
     class Meta:
         model = Car
-        fields = ('id', 'make', 'model', 'rates')
+        fields = ('id', 'make', 'model', 'avg_rating')
 
 
 class RateSerializer(serializers.ModelSerializer):

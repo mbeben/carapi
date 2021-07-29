@@ -1,7 +1,7 @@
 from rest_framework import mixins, viewsets
 
 
-class CreateListDestroyModelViewset(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.DestroyModelMixin,
+class CreateDestroyModelViewset(mixins.ListModelMixin, mixins.DestroyModelMixin,
                                     viewsets.GenericViewSet):
     """
     A viewset that provides `create`, `list`, and `destroy` actions.
