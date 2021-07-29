@@ -62,6 +62,13 @@ class CarSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class CarListSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Car
+        fields = ('id', 'make', 'model', 'rates')
+
+
 class RateSerializer(serializers.ModelSerializer):
 
     class Meta:
